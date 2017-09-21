@@ -26,7 +26,7 @@ class App extends Component {
 renderTweets(){
   return this.props.tweets.map((t, i) => {
       console.log(t);
-      return <Follower tweet = {t} key={i}/>;
+      return <FollowersList tweet = {t} key={i}/>;
   });
 }
 
