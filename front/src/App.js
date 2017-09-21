@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import FollowersList from "./FollowersList.js";
+import Searchbox from "./Searchbox.js";
+import FolllowersChain from "./FollowersChain.js";
 
 class App extends Component {
   constructor(props){
