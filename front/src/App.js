@@ -24,7 +24,7 @@ class App extends Component {
       usuario : user,
       chain : this.state.chain.concat(user)
     }, () => {
-      var url = "/followers/"+this.state.chain;
+      var url = "/followers/"+this.state.usuario;
       fetch(url, {
         method: "GET", headers : {
           accept : "application/json"
@@ -42,7 +42,26 @@ class App extends Component {
   }
 
   changeUser(user){
-    
+    var userEl = user.split(" ");
+    this.setState({
+      usuario : userEl[1],
+      chain : this.state.chain.slice(0, userEl[0]+1)
+    }, () => {
+      var url = "/followers/"+this.state.usuario;
+      fetch(url, {
+        method: "GET", headers : {
+          accept : "application/json"
+        }}).then((res) => {
+          if(res.ok) {
+            return res.json();
+          } return [];
+        }).then(
+          (json) => {
+            this.setState({
+              followers : json.data
+            });        
+        }).catch();
+    });
   }
 
   render() {

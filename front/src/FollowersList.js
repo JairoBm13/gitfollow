@@ -10,7 +10,6 @@ class FollowersList extends Component {
 
     renderFollowers(){
         return this.props.followers.map((t, i) => {
-            console.log(t);
             return <Follower follow = {t} key={i}/>;
         });
     }

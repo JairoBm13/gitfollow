@@ -48,7 +48,8 @@ router.get('/followersFrom/:user', function(req,res){
 //Functions for GET
 
 function getCommentsForUser(userid , callback){
-  mongodb.connect(url, (err,db) => {
+  mongodb.connect(urlMongo, (err,db) => {
+    if(err) throw err;
     var userComments = db.collection("userComments");
     userComments.find({id:userid}).toArray((err2, comments) => {
       callback(comments);
@@ -57,7 +58,8 @@ function getCommentsForUser(userid , callback){
 }
 
 function getCommentsForRepo(repoid, callback){
-  mongodb.connect(url, (err,db) => {
+  mongodb.connect(urlMongo, (err,db) => {
+    if(err) throw err;
     var repoComments = db.collection("repoComments");
     repoComments.find({id:repoid}).toArray((err2, comments) => {
       callback(comments);
@@ -65,13 +67,13 @@ function getCommentsForRepo(repoid, callback){
   });
 }
 
-router.get('/repoCommnets/:id', function(req, res, next) {
+router.get('/repoComments/:id', function(req, res, next) {
   getCommentsForRepo(req.params.id, (tweets) => {
     res.json(tweets);
   });
 });
 
-router.get('/userCommnets/:id', function(req, res, next) {
+router.get('/userComments/:id', function(req, res, next) {
   getCommentsForUser(req.params.id, (tweets) => {
     res.json(tweets);
   });
@@ -79,10 +81,10 @@ router.get('/userCommnets/:id', function(req, res, next) {
 
 router.post('/commentUser/:id', function(req, res){
   var comment = req.body;
-  mongodb.connect(url, (err, db) => {
+  mongodb.connect(urlMongo, (err, db) => {
     db.collection("userComments")
     .updateOne({id:req.params.id}, 
-      {$push: {comments: comment}}, (dbError, dbRes) =>{
+      {$push: {comments: comment.value}}, (dbError, dbRes) =>{
         db.close();
       });
   });
@@ -90,10 +92,10 @@ router.post('/commentUser/:id', function(req, res){
 
 router.post('/commentRepo/:id', function(req, res){
   var comment = req.body;
-  mongodb.connect(url, (err, db) => {
+  mongodb.connect(urlMongo, (err, db) => {
     db.collection("repoComments")
     .updateOne({id:req.params.id}, 
-      {$push: {comments: comment}}, (dbError, dbRes) =>{
+      {$push: {comments: comment.value}}, (dbError, dbRes) =>{
         db.close();
       });
   });
