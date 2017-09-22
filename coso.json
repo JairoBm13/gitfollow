@@ -1,0 +1,51 @@
+{
+    "data": [
+        {
+            "login": "JairoBm13",
+            "id": 6612456,
+            "avatar_url": "https://avatars1.githubusercontent.com/u/6612456?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/JairoBm13",
+            "html_url": "https://github.com/JairoBm13",
+            "followers_url": "https://api.github.com/users/JairoBm13/followers",
+            "following_url": "https://api.github.com/users/JairoBm13/following{/other_user}",
+            "gists_url": "https://api.github.com/users/JairoBm13/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/JairoBm13/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/JairoBm13/subscriptions",
+            "organizations_url": "https://api.github.com/users/JairoBm13/orgs",
+            "repos_url": "https://api.github.com/users/JairoBm13/repos",
+            "events_url": "https://api.github.com/users/JairoBm13/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/JairoBm13/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        {
+            "login": "SamuelBaquero",
+            "id": 8427684,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/8427684?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/SamuelBaquero",
+            "html_url": "https://github.com/SamuelBaquero",
+            "followers_url": "https://api.github.com/users/SamuelBaquero/followers",
+            "following_url": "https://api.github.com/users/SamuelBaquero/following{/other_user}",
+            "gists_url": "https://api.github.com/users/SamuelBaquero/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/SamuelBaquero/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/SamuelBaquero/subscriptions",
+            "organizations_url": "https://api.github.com/users/SamuelBaquero/orgs",
+            "repos_url": "https://api.github.com/users/SamuelBaquero/repos",
+            "events_url": "https://api.github.com/users/SamuelBaquero/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/SamuelBaquero/received_events",
+            "type": "User",
+            "site_admin": false
+        }
+    ],
+    "meta": {
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "54",
+        "x-ratelimit-reset": "1506019135",
+        "x-github-request-id": "C754:75E2:6715AF:EC9B3D:59C3FC21",
+        "x-github-media-type": "github.v3; format=json",
+        "etag": "4321e81ea3644ed03d6f3361914052c9",
+        "status": "200 OK"
+    }
+}
