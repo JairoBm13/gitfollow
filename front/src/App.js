@@ -11,7 +11,7 @@ class App extends Component {
       followers : [],
       chain : [],
       filt : "",
-      usuario : ""
+      usuario : "",
     };
   }
 
@@ -20,6 +20,52 @@ class App extends Component {
   }
 
   search(user){
+    if(this.state.chain.length == 0){
+      this.setState({
+        usuario : user,
+        chain : this.state.chain.concat(user)
+      }, () => {
+        var url = "/followers/"+this.state.usuario;
+        fetch(url, {
+          method: "GET", headers : {
+            accept : "application/json"
+          }}).then((res) => {
+            if(res.ok) {
+              return res.json();
+            } return [];
+          }).then(
+            (json) => {
+              this.setState({
+                followers : json.data
+              });        
+          }).catch();
+      });
+    } else {
+      this.setState({chain : []},
+        () => { this.setState({
+        usuario : user,
+        chain : this.state.chain.concat(user)
+      }, () => {
+        var url = "/followers/"+this.state.usuario;
+        fetch(url, {
+          method: "GET", headers : {
+            accept : "application/json"
+          }}).then((res) => {
+            if(res.ok) {
+              return res.json();
+            } return [];
+          }).then(
+            (json) => {
+              this.setState({
+                followers : json.data
+              });        
+          }).catch();
+      });
+    });
+    }
+  }
+
+  searchOnClick(user){
     this.setState({
       usuario : user,
       chain : this.state.chain.concat(user)
@@ -73,7 +119,7 @@ class App extends Component {
           <FollowersChain history={this.state.chain} onUser={this.changeUser.bind(this)}/>
          </div>
          <div className="followers">
-          <FollowersList followers={this.state.followers}/> 
+          <FollowersList searchAgain={this.searchOnClick.bind(this)}followers={this.state.followers}/> 
          </div>
         </div>
       </div>

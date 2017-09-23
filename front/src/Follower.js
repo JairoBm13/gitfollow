@@ -85,7 +85,7 @@ class Follower extends Component{
         return (
         <div>
             <img className="profile" src={this.props.follow.avatar_url} alt={this.props.follow.login+" profile pic"}/>
-            <div>{this.props.follow.login}</div>
+            <div><a onClick={this.searchAgain.bind(this)}>{this.props.follow.login}</a></div>
             {this.state.repos && <Repos repos={this.state.repos} />}
             <form>
                 <textarea value={this.state.value} onChange={this.handleChange.bind(this)} />
@@ -96,6 +96,11 @@ class Follower extends Component{
             {this.state.show && <CommentList comments={this.state.comments}/>}
 
         </div>);
+    }
+
+    searchAgain(event){
+      event.preventDefault();
+      this.props.change(event.currentTarget.textContent);
     }
 }
 

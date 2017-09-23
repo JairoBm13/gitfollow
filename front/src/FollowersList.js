@@ -10,8 +10,12 @@ class FollowersList extends Component {
 
     renderFollowers(){
         return this.props.followers.map((t, i) => {
-            return <Follower follow = {t} key={i}/>;
+            return <Follower change={this.changeSearch.bind(this)} follow = {t} key={i}/>;
         });
+    }
+
+    changeSearch(usuario){
+        this.props.searchAgain(usuario);
     }
 }
 
