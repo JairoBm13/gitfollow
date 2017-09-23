@@ -3,7 +3,7 @@ var GitHubApi = require('github');
 var router = express.Router();
 var mongodb = require('mongodb');
 
-var urlMongo = "mongodb://localhost:27017/gitfollow";
+var urlMongo = process.env.MONGO;
 
 router.get('/getRepos/:user', function(req, res){
   var github = new GitHubApi({});
@@ -53,6 +53,7 @@ function getCommentsForUser(userid , callback){
     var userComments = db.collection("userComments");
     userComments.find({id:userid}).toArray((err2, comments) => {
       callback(comments);
+      db.close();
     });
   });
 }
@@ -63,6 +64,7 @@ function getCommentsForRepo(repoid, callback){
     var repoComments = db.collection("repoComments");
     repoComments.find({id:repoid}).toArray((err2, comments) => {
       callback(comments);
+      db.close();
     });
   });
 }
