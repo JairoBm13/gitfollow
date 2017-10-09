@@ -9,7 +9,9 @@ class FollowersChain extends Component {
 
     render(){
         return (<h3>{this.props.history.map((follower, i)=> { 
-                 return (<p className="chain" key={i}><a onClick={this.handleClick.bind(this)}>{i + " " +follower}</a><span> > </span></p>);
+                 return (<p className="chain" key={i}>
+                     <a onClick={this.handleClick.bind(this)}>{i + " " +follower}</a>
+                     <span> > </span></p>);
         })}</h3>);
     }
 }
